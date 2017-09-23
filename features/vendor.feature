@@ -1,5 +1,5 @@
 Feature: Vendor Feature
-  Acceptance criterai for the vending machine
+  Acceptance criteria for the vending machine
 
   Scenario: Accepts Coins
     Given I am a vendor

@@ -1,3 +1,3 @@
 class VendingMachine(object):
     def insert_coins(self):
-        pass
+        return "Thank you for your purchase"
