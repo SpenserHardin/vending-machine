@@ -1,7 +1,7 @@
 Feature: Vendor Feature
   Acceptance criteria for the vending machine
 
-  Scenario: Accepts Coins
+  Scenario: Customer orders a coke
     Given I am a vendor
-    When I give the vending machine coins
-    Then the machine collects the money
+    When I order a "Coke"
+    Then the displays says "Insert Coin"

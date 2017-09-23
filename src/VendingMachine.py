@@ -1,3 +1,6 @@
 class VendingMachine(object):
-    def insert_coins(self):
-        return "Thank you for your purchase"
+
+    DISPLAY = ''
+
+    def __init__(self, item):
+        self.item = item

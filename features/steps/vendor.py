@@ -1,21 +1,22 @@
+import nose.tools as nt
 from behave import *
 
 from src.VendingMachine import VendingMachine
 
-use_step_matcher("re")
+use_step_matcher("parse")
 
 
-@given("I am a vendor")
+@given('I am a vendor')
 def step_impl(context):
     pass
 
 
-@when("I give the vending machine coins")
-def step_impl(context):
-    context.vending_machine = VendingMachine()
-    context.value = context.vending_machine.insert_coins()
+@when('I order a "{item}"')
+def step_impl(context, item):
+    context.vending_machine = VendingMachine(item)
+    print(type(context.vending_machine))
 
 
-@then("the machine collects the money")
-def step_impl(context):
-    assert context.value == "Thank you for your purchase"
+@then('the displays says "{msg}"')
+def step_impl(context, msg):
+    nt.assert_equals(context.vending_machine.DISPLAY, msg)
