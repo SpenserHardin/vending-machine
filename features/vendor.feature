@@ -3,6 +3,5 @@ Feature: Vendor Feature
 
   Scenario: Accepts Coins
     Given I am a vendor
-    When I give the vending machien coins
+    When I give the vending machine coins
     Then the machine collects the money
-

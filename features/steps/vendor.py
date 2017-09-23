@@ -1,27 +1,23 @@
 from behave import *
 
+from src.VendingMachine import VendingMachine
+
 use_step_matcher("re")
+
+MESSAGE = ''
 
 
 @given("I am a vendor")
 def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
     pass
 
 
-@when("I give the vending machien coins")
+@when("I give the vending machine coins")
 def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    pass
+    vending_machine = VendingMachine()
+    MESSAGE = vending_machine.insert_coins()
 
 
 @then("the machine collects the money")
 def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    pass
+    assert MESSAGE == "Thank you for your purchase"
