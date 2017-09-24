@@ -13,18 +13,17 @@ def step_impl(context):
 
 @given('order a "{item}" for "{price}" dollar')
 def step_impl(context, item, price):
-    pass
+    context.vending_machine = VendingMachine(item, price)
 
 
 @when('I order a "{item}"')
 def step_impl(context, item):
     context.vending_machine = VendingMachine(item)
-    print(type(context.vending_machine))
 
 
 @when('I insert "{payment}" dollar')
 def step_impl(context, payment):
-    pass
+    context.vending_machine.insert_payment(payment)
 
 
 @then('the displays says "{msg}"')
