@@ -7,4 +7,4 @@ class VendingMachine(object):
         self.price = price
 
     def insert_payment(self, payment):
-        pass
+        self.DISPLAY = 'Thank you'
