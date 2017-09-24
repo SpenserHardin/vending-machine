@@ -4,4 +4,4 @@ Feature: Vendor Feature
   Scenario: Customer orders a coke
     Given I am a vendor
     When I order a "Coke"
-    Then the displays says "Insert Coin"
+    Then the displays says "Insert Coins"
