@@ -11,10 +11,20 @@ def step_impl(context):
     pass
 
 
+@given('order a "{item}" for "{price}" dollar')
+def step_impl(context, item, price):
+    pass
+
+
 @when('I order a "{item}"')
 def step_impl(context, item):
     context.vending_machine = VendingMachine(item)
     print(type(context.vending_machine))
+
+
+@when('I insert "{payment}" dollar')
+def step_impl(context, payment):
+    pass
 
 
 @then('the displays says "{msg}"')
