@@ -13,17 +13,17 @@ def step_impl(context):
 
 @given('order a "{item}" for "{price}" dollar')
 def step_impl(context, item, price):
-    context.vending_machine = VendingMachine(item, price)
+    context.vending_machine = VendingMachine(item, float(price))
 
 
 @given('I purchase a "{item}" for "{price}"')
 def step_impl(context, item, price):
-    context.vending_machine = VendingMachine(item, price)
+    context.vending_machine = VendingMachine(item, float(price))
 
 
 @given('I have inserted "{payment}"')
 def step_impl(context, payment):
-    context.vending_machine.insert_payment(payment)
+    context.vending_machine.insert_payment(float(payment))
 
 
 @given('display says "Insert Coins"')
@@ -38,12 +38,12 @@ def step_impl(context, item):
 
 @when('I insert "{payment}"')
 def step_impl(context, payment):
-    context.vending_machine.insert_payment(payment)
+    context.vending_machine.insert_payment(float(payment))
 
 
 @when('I insert another "{payment}"')
 def step_impl(context, payment):
-    context.vending_machine.insert_payment(payment)
+    context.vending_machine.insert_payment(float(payment))
 
 
 @then('the displays says "{msg}"')
