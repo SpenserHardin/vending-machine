@@ -21,3 +21,10 @@ class TestVendingMachine(object):
         vending_machine.PAYMENT = .50
         vending_machine.insert_payment(.50)
         assert vending_machine.DISPLAY == 'Thank you'
+
+    def test_input_coins_returns_change(self):
+        expected_change = .25
+        vending_machine = VendingMachine('coke', 1)
+        vending_machine.PAYMENT = .75
+        actual_change = vending_machine.insert_payment(.50)
+        assert actual_change == expected_change

@@ -53,4 +53,4 @@ def step_impl(context, msg):
 
 @step('"{change}" cents is returned')
 def step_impl(context, change):
-    nt.assert_equals(context.change, change)
+    nt.assert_equals(context.change, float(change))
