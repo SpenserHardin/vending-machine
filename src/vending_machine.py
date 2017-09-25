@@ -7,7 +7,7 @@ class VendingMachine(object):
         self.item = item
         self.price = price
 
-    def insert_payment(self, payment):
+    def insert_coins(self, payment):
         self.PAYMENT += payment
         if self._payment_is_sufficient():
             self._update_display()
