@@ -17,3 +17,10 @@ Feature: Vendor Feature
     And order a "Coke" for "1" dollar
     When I insert ".50"
     Then the displays says "Insert Coins"
+
+  Scenario: Customer pays for item
+    Given I purchase a "Coke" for "1"
+    And I have inserted ".50"
+    And display says "Insert Coins"
+    When I insert another ".50"
+    Then the displays says "Thank you"
