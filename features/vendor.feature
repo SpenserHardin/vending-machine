@@ -9,5 +9,11 @@ Feature: Vendor Feature
   Scenario: Customer pays for item
     Given I am a vendor
     And order a "Coke" for "1" dollar
-    When I insert "1" dollar
+    When I insert "1"
     Then the displays says "Thank you"
+
+  Scenario: Customer pays for item
+    Given I am a vendor
+    And order a "Coke" for "1" dollar
+    When I insert ".50"
+    Then the displays says "Insert Coins"

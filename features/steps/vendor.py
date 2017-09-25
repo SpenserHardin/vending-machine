@@ -1,7 +1,7 @@
 import nose.tools as nt
 from behave import *
 
-from src.VendingMachine import VendingMachine
+from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
 
@@ -21,7 +21,7 @@ def step_impl(context, item):
     context.vending_machine = VendingMachine(item)
 
 
-@when('I insert "{payment}" dollar')
+@when('I insert "{payment}"')
 def step_impl(context, payment):
     context.vending_machine.insert_payment(payment)
 
