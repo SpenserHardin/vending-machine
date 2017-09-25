@@ -1,6 +1,7 @@
 class VendingMachine(object):
 
     DISPLAY = 'Insert Coins'
+    PAYMENT = 0
 
     def __init__(self, item, price=None):
         self.item = item
