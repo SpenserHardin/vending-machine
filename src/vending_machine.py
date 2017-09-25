@@ -13,7 +13,7 @@ class VendingMachine(object):
             self._update_display()
 
     def _payment_is_sufficient(self):
-        return self.PAYMENT == self.price
+        return self.PAYMENT >= self.price
 
     def _update_display(self):
         self.DISPLAY = 'Thank you'

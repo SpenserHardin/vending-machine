@@ -38,14 +38,19 @@ def step_impl(context, item):
 
 @when('I insert "{payment}"')
 def step_impl(context, payment):
-    context.vending_machine.insert_payment(float(payment))
+    context.change = context.vending_machine.insert_payment(float(payment))
 
 
 @when('I insert another "{payment}"')
 def step_impl(context, payment):
-    context.vending_machine.insert_payment(float(payment))
+    context.change = context.vending_machine.insert_payment(float(payment))
 
 
 @then('the displays says "{msg}"')
 def step_impl(context, msg):
     nt.assert_equals(context.vending_machine.DISPLAY, msg)
+
+
+@step('"{change}" cents is returned')
+def step_impl(context, change):
+    nt.assert_equals(context.change, change)

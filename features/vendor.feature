@@ -24,3 +24,12 @@ Feature: Vendor Feature
     And display says "Insert Coins"
     When I insert another ".50"
     Then the displays says "Thank you"
+
+  Scenario: Customer pays for item
+    Given I purchase a "Coke" for "1"
+    And I have inserted ".75"
+    And display says "Insert Coins"
+    When I insert another ".50"
+    Then the displays says "Thank you"
+    And ".25" cents is returned
+
