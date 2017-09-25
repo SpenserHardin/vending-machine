@@ -15,3 +15,9 @@ class TestVendingMachine(object):
     def test_payment_attribute_is_zero_when_no_payment_has_been_made(self):
         vending_machine = VendingMachine('coke', 1)
         assert vending_machine.PAYMENT == 0
+
+    def test_input_coins_tracks_payment_amount(self):
+        vending_machine = VendingMachine('coke', 1)
+        vending_machine.PAYMENT = .50
+        vending_machine.insert_payment(.50)
+        assert vending_machine.DISPLAY == 'Thank you'

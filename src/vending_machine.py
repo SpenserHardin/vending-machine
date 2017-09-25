@@ -8,5 +8,6 @@ class VendingMachine(object):
         self.price = price
 
     def insert_payment(self, payment):
-        if payment == self.price:
+        self.PAYMENT += payment
+        if self.PAYMENT == self.price:
             self.DISPLAY = 'Thank you'
