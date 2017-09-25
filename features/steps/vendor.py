@@ -11,6 +11,11 @@ def step_impl(context):
     pass
 
 
+@given('display says "Insert Coins"')
+def step_impl(context):
+    pass
+
+
 @given('order a "{item}" for "{price}" dollar')
 def step_impl(context, item, price):
     context.vending_machine = VendingMachine(item, float(price))
@@ -24,11 +29,6 @@ def step_impl(context, item, price):
 @given('I have inserted "{payment}"')
 def step_impl(context, payment):
     context.vending_machine.insert_payment(float(payment))
-
-
-@given('display says "Insert Coins"')
-def step_impl(context):
-    pass
 
 
 @when('I order a "{item}"')

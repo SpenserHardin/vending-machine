@@ -9,5 +9,11 @@ class VendingMachine(object):
 
     def insert_payment(self, payment):
         self.PAYMENT += payment
-        if self.PAYMENT == self.price:
-            self.DISPLAY = 'Thank you'
+        if self._payment_is_sufficient():
+            self._update_display()
+
+    def _payment_is_sufficient(self):
+        return self.PAYMENT == self.price
+
+    def _update_display(self):
+        self.DISPLAY = 'Thank you'
