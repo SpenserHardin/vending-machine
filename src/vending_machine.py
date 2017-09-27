@@ -14,7 +14,7 @@ class VendingMachine(object):
             return self._calculate_change()
 
     def _calculate_change(self):
-        return self.PAYMENT - self.price
+        return round(self.PAYMENT - self.price, 2)
 
     def _payment_is_sufficient(self):
         return self.PAYMENT >= self.price
