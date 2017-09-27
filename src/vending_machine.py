@@ -3,11 +3,13 @@ class VendingMachine(object):
     DISPLAY = 'Insert Coins'
     PAYMENT = 0
 
-    def __init__(self, item, price=None):
+    def __init__(self, item, validator, price=None):
         self.item = item
         self.price = price
+        self.validator = validator
 
-    def insert_coins(self, payment):
+    def insert_coins(self, coin):
+        payment = self.validator.determine_coin(coin)
         self.PAYMENT += payment
         if self._payment_is_sufficient():
             self._update_display()
