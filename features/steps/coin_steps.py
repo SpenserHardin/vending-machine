@@ -1,20 +1,24 @@
 from behave import *
 
+from src.coin import Coin
+from src.coin_validator import CoinValidator
 from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
 
 THANK_YOU = 'Thank you'
-
+COINS = {'Quarter': 5.670}
 
 @given('I have a "{coin}"')
 def step_impl(context, coin):
     context.quarter = '5.670'
 
 
-@when('I insert a "{coin}" into the vending machine')
-def step_impl(context, coin):
-    context.vending_machine = VendingMachine('item', .25)
+@when('I insert a "{payment}" into the vending machine')
+def step_impl(context, payment):
+    coin = Coin(COINS[payment])
+    validator = CoinValidator()
+    context.vending_machine = VendingMachine('item', validator, .25)
     context.vending_machine.insert_coins(coin)
 
 

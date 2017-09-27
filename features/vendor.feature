@@ -8,28 +8,28 @@ Feature: Vendor Feature
 
   Scenario: Customer pays for item
     Given I am a vendor
-    And order a "Coke" for "1" dollar
-    When I insert "1"
+    And order a "Coke" for ".25" dollar
+    When I insert ".25"
     Then the displays says "Thank you"
 
   Scenario: Customer pays for item
     Given I am a vendor
-    And order a "Coke" for "1" dollar
-    When I insert ".50"
+    And order a "Coke" for ".50" dollar
+    When I insert ".25"
     Then the displays says "Insert Coins"
 
   Scenario: Customer pays for item
-    Given I purchase a "Coke" for "1"
-    And I have inserted ".50"
+    Given I purchase a "Coke" for ".50"
+    And I have inserted ".25"
     And display says "Insert Coins"
-    When I insert another ".50"
+    When I insert another ".25"
     Then the displays says "Thank you"
 
   Scenario: Customer pays for item
-    Given I purchase a "Coke" for "1"
-    And I have inserted ".75"
+    Given I purchase a "Coke" for ".50"
+    And I have inserted ".30"
     And display says "Insert Coins"
-    When I insert another ".50"
+    When I insert another ".25"
     Then the displays says "Thank you"
-    And ".25" cents is returned
+    And ".05" cents is returned
 

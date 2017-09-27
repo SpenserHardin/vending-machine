@@ -1,9 +1,13 @@
 import nose.tools as nt
 from behave import *
 
+from src.coin import Coin
+from src.coin_validator import CoinValidator
 from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
+
+COINS = {'.25': 5.670}
 
 
 @given('I am a vendor')
@@ -18,32 +22,39 @@ def step_impl(context):
 
 @given('order a "{item}" for "{price}" dollar')
 def step_impl(context, item, price):
-    context.vending_machine = VendingMachine(item, float(price))
+    validator = CoinValidator()
+    context.vending_machine = VendingMachine(item, validator, float(price))
 
 
 @given('I purchase a "{item}" for "{price}"')
 def step_impl(context, item, price):
-    context.vending_machine = VendingMachine(item, float(price))
+    validator = CoinValidator()
+    context.vending_machine = VendingMachine(item, validator, float(price))
 
 
 @given('I have inserted "{payment}"')
 def step_impl(context, payment):
-    context.vending_machine.insert_coins(float(payment))
+    context.vending_machine.PAYMENT = float(payment)
 
 
 @when('I order a "{item}"')
 def step_impl(context, item):
-    context.vending_machine = VendingMachine(item)
+    validator = CoinValidator()
+    context.vending_machine = VendingMachine(item, validator)
 
 
 @when('I insert "{payment}"')
 def step_impl(context, payment):
-    context.change = context.vending_machine.insert_coins(float(payment))
+    weight = COINS[payment]
+    coin = Coin(weight)
+    context.change = context.vending_machine.insert_coins(coin)
 
 
 @when('I insert another "{payment}"')
 def step_impl(context, payment):
-    context.change = context.vending_machine.insert_coins(float(payment))
+    weight = COINS[payment]
+    coin = Coin(weight)
+    context.change = context.vending_machine.insert_coins(coin)
 
 
 @then('the displays says "{msg}"')
