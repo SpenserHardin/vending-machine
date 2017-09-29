@@ -17,3 +17,10 @@ class TestCoinValidator(object):
         validator = CoinValidator()
         actual_value = validator.determine_coin(coin)
         assert actual_value == expected_value
+
+    def test_coin_validate_can_identify_a_nickle(self):
+        expected_value = .05
+        coin = Coin(5.000)
+        validator = CoinValidator()
+        actual_value = validator.determine_coin(coin)
+        assert actual_value == expected_value

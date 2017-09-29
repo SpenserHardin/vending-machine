@@ -5,3 +5,5 @@ class CoinValidator(object):
             return .25
         if coin.weight == 2.268:
             return .10
+        if coin.weight == 5.000:
+            return .05
