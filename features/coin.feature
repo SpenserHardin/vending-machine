@@ -13,4 +13,9 @@ Feature: Vending Machine accepts Quarters, Dimes, and Nickles. It does not accep
   Scenario: Vending Machine accepts quarters
     Given I have a "Nickle"
     When I insert a "Nickle" into the vending machine
-    Then the vending machine accepts the "Nickle"  
+    Then the vending machine accepts the "Nickle"
+
+  Scenario: Vending Machine accepts quarters
+    Given I have a "Penny"
+    When I insert a "Penny" into the vending machine
+    Then the vending machine does not accepts the coin

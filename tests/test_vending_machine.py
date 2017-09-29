@@ -36,3 +36,11 @@ class TestVendingMachine(object):
         self.vending_machine.PAYMENT = .30
         actual_change = self.vending_machine.insert_coins(self.coin)
         assert actual_change == expected_change
+
+    def test_input_coins_does_not_allow_pennies(self):
+        expected_change = .01
+        penny = Coin(2.5)
+        actual_change = self.vending_machine.insert_coins(penny)
+        assert actual_change == expected_change
+        assert self.vending_machine.DISPLAY == INSERT_COINS
+

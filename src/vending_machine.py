@@ -10,10 +10,13 @@ class VendingMachine(object):
 
     def insert_coins(self, coin):
         payment = self.validator.determine_coin(coin)
-        self.PAYMENT += payment
-        if self._payment_is_sufficient():
-            self._update_display()
-            return self._calculate_change()
+        if payment != .01:
+            self.PAYMENT += payment
+            if self._payment_is_sufficient():
+                self._update_display()
+                return self._calculate_change()
+        else:
+            return payment
 
     def _calculate_change(self):
         return round(self.PAYMENT - self.price, 2)
