@@ -7,7 +7,9 @@ from src.vending_machine import VendingMachine
 use_step_matcher("parse")
 
 THANK_YOU = 'Thank you'
-COINS = {'Quarter': 5.670}
+COINS = {'Quarter': {'weight': 5.670, 'value': .25},
+         'Dime': {'weight': 2.268, 'value': .10}}
+
 
 @given('I have a "{coin}"')
 def step_impl(context, coin):
@@ -16,9 +18,9 @@ def step_impl(context, coin):
 
 @when('I insert a "{payment}" into the vending machine')
 def step_impl(context, payment):
-    coin = Coin(COINS[payment])
+    coin = Coin(COINS[payment]['weight'])
     validator = CoinValidator()
-    context.vending_machine = VendingMachine('item', validator, .25)
+    context.vending_machine = VendingMachine('item', validator, COINS[payment]['value'])
     context.vending_machine.insert_coins(coin)
 
 
