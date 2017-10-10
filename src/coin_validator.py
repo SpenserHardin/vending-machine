@@ -1,11 +1,16 @@
 class CoinValidator(object):
-    @staticmethod
-    def determine_coin(coin):
+    coin_value = 0
+
+    def determine_coin(self, coin):
         if coin.weight == 5.670:
-            return .25
+            self.coin_value = .25
+            return self.coin_value
         if coin.weight == 2.268:
-            return .10
+            self.coin_value = .10
+            return self.coin_value
         if coin.weight == 5.000:
-            return .05
+            self.coin_value = .05
+            return self.coin_value
         if coin.weight == 2.5:
-            return .01
+            self.coin_value = .01
+            return self.coin_value
