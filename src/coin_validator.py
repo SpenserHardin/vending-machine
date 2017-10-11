@@ -14,3 +14,19 @@ class CoinValidator(object):
         if coin.weight == 2.5:
             self.coin_value = .01
             return self.coin_value
+
+
+class Quarter(object):
+    coin_value = 0
+
+
+class Dime(object):
+    coin_value = 0
+
+
+class Nickel(object):
+    coin_value = 0
+
+
+class Penny(object):
+    coin_value = 0
