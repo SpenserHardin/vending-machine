@@ -1,32 +1,27 @@
 class CoinValidator(object):
-    coin_value = 0
-
-    def determine_coin(self, coin):
+    @staticmethod
+    def determine_coin(coin):
         if coin.weight == 5.670:
-            self.coin_value = .25
-            return self.coin_value
+            return Quarter.coin_value
         if coin.weight == 2.268:
-            self.coin_value = .10
-            return self.coin_value
+            return Dime.coin_value
         if coin.weight == 5.000:
-            self.coin_value = .05
-            return self.coin_value
+            return Nickel.coin_value
         if coin.weight == 2.5:
-            self.coin_value = .01
-            return self.coin_value
+            return Penny.coin_value
 
 
 class Quarter(object):
-    coin_value = 0
+    coin_value = .25
 
 
 class Dime(object):
-    coin_value = 0
+    coin_value = .10
 
 
 class Nickel(object):
-    coin_value = 0
+    coin_value = .05
 
 
 class Penny(object):
-    coin_value = 0
+    coin_value = .01
