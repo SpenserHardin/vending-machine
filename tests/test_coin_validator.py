@@ -9,25 +9,25 @@ class TestCoinValidator(object):
         coin = Coin(5.670)
         validator = CoinValidator()
         actual_value = validator.determine_coin(coin)
-        assert actual_value == expected_value
+        assert actual_value.coin_value == expected_value
 
     def test_coin_validate_can_identify_a_dime(self):
         expected_value = .10
         coin = Coin(2.268)
         validator = CoinValidator()
         actual_value = validator.determine_coin(coin)
-        assert actual_value == expected_value
+        assert actual_value.coin_value == expected_value
 
     def test_coin_validate_can_identify_a_nickle(self):
         expected_value = .05
         coin = Coin(5.000)
         validator = CoinValidator()
         actual_value = validator.determine_coin(coin)
-        assert actual_value == expected_value
+        assert actual_value.coin_value == expected_value
 
     def test_coin_validate_can_identify_a_penny(self):
         expected_response = .01
         coin = Coin(2.5)
         validator = CoinValidator()
         actual_value = validator.determine_coin(coin)
-        assert actual_value == expected_response
+        assert actual_value.coin_value == expected_response

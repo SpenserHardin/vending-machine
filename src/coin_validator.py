@@ -11,13 +11,13 @@ class CoinValidator(object):
         coin_type = self.coins.get(coin.weight)
         if coin_type == 'quarter':
             my_coin = Quarter(coin.weight)
-            return my_coin.coin_value
+            return my_coin
         if coin_type == 'dime':
             my_coin = Dime(coin.weight)
-            return my_coin.coin_value
+            return my_coin
         if coin_type == 'nickel':
             my_coin = Nickel(coin.weight)
-            return my_coin.coin_value
+            return my_coin
         else:
             my_coin = Penny(coin.weight)
-            return my_coin.coin_value
+            return my_coin

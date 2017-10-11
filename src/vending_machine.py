@@ -9,7 +9,8 @@ class VendingMachine(object):
         self.validator = validator
 
     def insert_coins(self, coin):
-        payment = self.validator.determine_coin(coin)
+        coin_object = self.validator.determine_coin(coin)
+        payment = coin_object.coin_value
         if payment != .01:
             self.PAYMENT += payment
             if self._payment_is_sufficient():
