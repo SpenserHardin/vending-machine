@@ -1,11 +1,13 @@
+from src.Quarter import Quarter
+
+
 class CoinValidator(object):
-    @staticmethod
-    def determine_coin(coin):
-        if coin.weight == 5.670:
-            return .25
-        if coin.weight == 2.268:
-            return .10
-        if coin.weight == 5.000:
-            return .05
-        if coin.weight == 2.5:
-            return .01
+    coins = {5.670: 'quarter', 2.268: .10, 5.000: .05, 2.5: .01}
+
+    def determine_coin(self, coin):
+        value = self.coins.get(coin.weight)
+        if value == 'quarter':
+            my_coin = Quarter(coin.weight)
+            return my_coin.coin_value
+        else:
+            return value
