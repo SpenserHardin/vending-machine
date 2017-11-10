@@ -13,12 +13,20 @@ COINS = {'Quarter': {'weight': 5.670, 'value': .25},
          'Penny': {'weight': 2.5, 'value': .01}}
 
 
+class Chips:
+    def __init__(self):
+        self.price = .50
+
+
+PRODUCTS = {
+    'Chips': Chips()
+}
+
 @given('I order a "{product}"')
 def step_impl(context, product):
-    product = "Product"
-    price = ".50"
+    product = PRODUCTS[product]
     validator = CoinValidator()
-    context.vending_machine = VendingMachine(product, validator, float(price))
+    context.vending_machine = VendingMachine(product, validator, product.price)
 
 
 @when("I select the respective button")
