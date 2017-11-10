@@ -1,6 +1,9 @@
-# Created by spenserhardin at 11/9/17
-Feature: #Enter feature name here
-  # Enter feature description here
+Feature: Product Feature
+  Acceptance criteria for selecting various products from the vending machine
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Customer orders Chips
+    Given I order a "Chips"
+    When I select the respective button
+    And I have inserted enough money
+    Then the product is dispensed
+    And the machine displays "Thank you"
