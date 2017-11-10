@@ -9,6 +9,7 @@ use_step_matcher("parse")
 
 COINS = {'.25': 5.670}
 
+ITEM = "Item"
 
 @given('I am a vendor')
 def step_impl(context):
@@ -20,16 +21,16 @@ def step_impl(context):
     pass
 
 
-@given('order a "{item}" for "{price}" dollar')
-def step_impl(context, item, price):
+@given('order an item for "{price}" dollar')
+def step_impl(context, price):
     validator = CoinValidator()
-    context.vending_machine = VendingMachine(item, validator, float(price))
+    context.vending_machine = VendingMachine(ITEM, validator, float(price))
 
 
-@given('I purchase a "{item}" for "{price}"')
-def step_impl(context, item, price):
+@given('I purchase an item for "{price}"')
+def step_impl(context, price):
     validator = CoinValidator()
-    context.vending_machine = VendingMachine(item, validator, float(price))
+    context.vending_machine = VendingMachine(ITEM, validator, float(price))
 
 
 @given('I have inserted "{payment}"')
@@ -37,10 +38,10 @@ def step_impl(context, payment):
     context.vending_machine.PAYMENT = float(payment)
 
 
-@when('I order a "{item}"')
-def step_impl(context, item):
+@when('I order an item')
+def step_impl(context):
     validator = CoinValidator()
-    context.vending_machine = VendingMachine(item, validator)
+    context.vending_machine = VendingMachine(ITEM, validator)
 
 
 @when('I insert "{payment}"')
