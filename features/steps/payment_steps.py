@@ -7,7 +7,7 @@ from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
 
-COINS = {'.25': 5.670}
+COINS_VALUE = {'.25': 5.670}
 
 ITEM = "Item"
 
@@ -46,14 +46,14 @@ def step_impl(context):
 
 @when('I insert "{payment}"')
 def step_impl(context, payment):
-    weight = COINS[payment]
+    weight = COINS_VALUE[payment]
     coin = Coin(weight)
     context.change = context.vending_machine.insert_coins(coin)
 
 
 @when('I insert another "{payment}"')
 def step_impl(context, payment):
-    weight = COINS[payment]
+    weight = COINS_VALUE[payment]
     coin = Coin(weight)
     context.change = context.vending_machine.insert_coins(coin)
 
