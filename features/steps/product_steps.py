@@ -1,32 +1,17 @@
 from behave import *
 import nose.tools as nt
-
 from features.utils.constants import COINS
 from src.coin import Coin
 from src.coin_validator import CoinValidator
+from src.model.product import Product
 from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
 
 
-class Chips:
-    def __init__(self):
-        self.price = .50
-
-
-class Cola:
-    def __init__(self):
-        self.price = 1.00
-
-PRODUCTS = {
-    'Chips': Chips(),
-    'Cola': Cola()
-}
-
-
-@given('I order a "{product}"')
-def step_impl(context, product):
-    product = PRODUCTS[product]
+@given('I order a "{product}" which costs "{price:d}"')
+def step_impl(context, product, price):
+    product = Product(product, price)
     validator = CoinValidator()
     context.vending_machine = VendingMachine(product, validator, product.price)
 
@@ -43,7 +28,7 @@ def step_impl(context):
 
 @step('the machine displays "{msg}"')
 def step_impl(context, msg):
-        nt.assert_equals(context.vending_machine.DISPLAY, msg)
+    nt.assert_equals(context.vending_machine.DISPLAY, msg)
 
 
 @step('I have inserted "{amount:d}" "{coin_type}"')
@@ -51,3 +36,10 @@ def step_impl(context, amount, coin_type):
     coin = Coin(COINS[coin_type]['weight'])
     for x in range(amount):
         context.vending_machine.insert_coins(coin)
+
+
+@given('I order "{product}" for "{price}"')
+def step_impl(context, product, price):
+    product = Product(product, float(price))
+    validator = CoinValidator()
+    context.vending_machine = VendingMachine(product, validator, product.price)
