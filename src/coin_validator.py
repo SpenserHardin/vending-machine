@@ -1,3 +1,4 @@
+from src.model.dime import Dime
 from src.model.quarter import Quarter
 
 
@@ -11,6 +12,8 @@ class CoinValidator:
     def calculate_coin(coin):
         if (coin.weight == Quarter.weight) & (coin.diameter == Quarter.diameter):
             return Quarter()
+        if (coin.weight == Dime.weight) & (coin.diameter == Dime.diameter):
+            return Dime()
         else:
             return "UnIdentified Coin"
 
