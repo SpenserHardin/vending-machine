@@ -1,15 +1,21 @@
-from src.coin import Coin
 from src.coin_validator import CoinValidator
+from src.model.coin import Coin
+from src.model.quarter import Quarter
 
 
 class TestCoinValidator(object):
 
     def test_coin_validate_can_identify_a_quarter(self):
-        expected_value = .25
-        coin = Coin(5.670)
+        coin = Coin(5.670, 0.955)
         validator = CoinValidator()
-        actual_value = validator.determine_coin(coin)
-        assert actual_value == expected_value
+        actual_value = validator.calculate_coin(coin)
+        assert isinstance(actual_value, Quarter)
+
+    def test_coin_validate_can_measure_diameter_of_quarter(self):
+        coin = Coin(5.670, 0.0)
+        validator = CoinValidator()
+        actual_value = validator.calculate_coin(coin)
+        assert actual_value == "UnIdentified Coin"
 
     def test_coin_validate_can_identify_a_dime(self):
         expected_value = .10

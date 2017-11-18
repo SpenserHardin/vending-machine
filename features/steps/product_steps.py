@@ -1,8 +1,9 @@
-from behave import *
 import nose.tools as nt
+from behave import *
+
 from features.utils.constants import COINS
-from src.coin import Coin
 from src.coin_validator import CoinValidator
+from src.model.coin import Coin
 from src.model.product import Product
 from src.vending_machine import VendingMachine
 

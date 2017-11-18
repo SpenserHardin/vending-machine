@@ -1,5 +1,5 @@
-from src.coin import Coin
 from src.coin_validator import CoinValidator
+from src.model.coin import Coin
 from src.vending_machine import VendingMachine
 
 THANK_YOU = 'Thank you'

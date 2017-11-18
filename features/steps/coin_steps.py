@@ -1,8 +1,8 @@
 from behave import *
 
 from features.utils.constants import COINS, THANK_YOU, INSERT_COINS
-from src.coin import Coin
 from src.coin_validator import CoinValidator
+from src.model.coin import Coin
 from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
