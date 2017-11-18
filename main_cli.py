@@ -6,7 +6,7 @@ from src.vending_machine import VendingMachine
 
 def main():
     coke = Product('Coke', 1.00)
-    validator = CoinValidator
+    validator = CoinValidator()
     vending_machine = VendingMachine(coke, validator, coke.price)
 
     coin = Coin(5.670)
