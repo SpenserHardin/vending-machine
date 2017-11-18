@@ -1,4 +1,6 @@
 from src.model.dime import Dime
+from src.model.nickel import Nickel
+from src.model.penny import Penny
 from src.model.quarter import Quarter
 
 
@@ -14,6 +16,10 @@ class CoinValidator:
             return Quarter()
         if (coin.weight == Dime.weight) & (coin.diameter == Dime.diameter):
             return Dime()
+        if (coin.weight == Nickel.weight) & (coin.diameter == Nickel.diameter):
+            return Nickel()
+        if (coin.weight == Penny.weight) & (coin.diameter == Penny.diameter):
+            return Penny()
         else:
             return "UnIdentified Coin"
 
