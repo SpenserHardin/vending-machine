@@ -3,7 +3,7 @@ Feature: Payment Feature
 
   Scenario: Customer orders an item
     Given I am a vendor
-    When I order an item
+    When I go to order an item
     Then the displays says "Insert Coins"
 
   Scenario: Customer pays for item

@@ -24,7 +24,7 @@ def step_impl(context):
 
 @when('I have inserted "{amount:d}" "{coin_type}"')
 def step_impl(context, amount, coin_type):
-    coin = Coin(COINS[coin_type]['weight'])
+    coin = Coin(COINS[coin_type]['weight'], COINS[coin_type]['diameter'])
     for x in range(amount):
         context.vending_machine.insert_coins(coin)
 

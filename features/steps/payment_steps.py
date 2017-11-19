@@ -3,13 +3,13 @@ from behave import *
 
 from src.coin_validator import CoinValidator
 from src.model.coin import Coin
+from src.model.product import Product
 from src.vending_machine import VendingMachine
 
 use_step_matcher("parse")
 
 COINS_VALUE = {'.25': 5.670}
-
-ITEM = "Item"
+COINS_DIAMETER = {5.670: 0.955}
 
 @given('I am a vendor')
 def step_impl(context):
@@ -23,14 +23,12 @@ def step_impl(context):
 
 @given('order an item for "{price}" dollar')
 def step_impl(context, price):
-    validator = CoinValidator()
-    context.vending_machine = VendingMachine(ITEM, validator, float(price))
+    order_item(context, price)
 
 
 @given('I purchase an item for "{price}"')
 def step_impl(context, price):
-    validator = CoinValidator()
-    context.vending_machine = VendingMachine(ITEM, validator, float(price))
+    order_item(context, price)
 
 
 @given('I have inserted "{payment}"')
@@ -38,24 +36,35 @@ def step_impl(context, payment):
     context.vending_machine.PAYMENT = float(payment)
 
 
-@when('I order an item')
-def step_impl(context):
+def order_item(context, price):
     validator = CoinValidator()
-    context.vending_machine = VendingMachine(ITEM, validator)
+    product = Product('Item', float(price))
+    context.vending_machine = VendingMachine(product, validator, float(price))
+
+
+@when("I go to order an item")
+def step_impl(context):
+    order_item(context, 1.00)
 
 
 @when('I insert "{payment}"')
 def step_impl(context, payment):
-    weight = COINS_VALUE[payment]
-    coin = Coin(weight)
+    coin = create_coin(payment)
+    print(coin)
     context.change = context.vending_machine.insert_coins(coin)
 
 
 @when('I insert another "{payment}"')
 def step_impl(context, payment):
-    weight = COINS_VALUE[payment]
-    coin = Coin(weight)
+    coin = create_coin(payment)
     context.change = context.vending_machine.insert_coins(coin)
+
+
+def create_coin(payment):
+    weight = COINS_VALUE[payment]
+    diameter = COINS_DIAMETER[weight]
+    coin = Coin(weight, diameter)
+    return coin
 
 
 @then('the displays says "{msg}"')
